@@ -1,0 +1,74 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono auto generated files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icons and icon resources
+Icon?
+._*
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+*.bz2
+*.7z
+*.rar
+
+# C# directories and files
+.vscode/
+*.vs/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Rider project files
+.idea/
+.idea_modules/
+.idea/*
+.idea/*.iml
+
+# Visual Studio Code settings
+.vscode/
+
+# Backup files
+*.bak
+*.swp
+
+# Dependency directories
+node_modules/
+packages/
+
+# Log files
+*.log
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored as it's a generated folder from NuGet restore
+**/packages/*
