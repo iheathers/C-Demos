@@ -1,34 +1,89 @@
-﻿// string? readResult;
+﻿using System;
 
+int[] times = { 800, 1200, 1600, 2000 };
+int diff = 0;
 
-// do
-// {
-//     Console.WriteLine("Enter a string");
-//     readResult = Console.ReadLine();
+Console.WriteLine("Enter current GMT");
+int currentGMT = Convert.ToInt32(Console.ReadLine());
 
-// } while (readResult == null);
+Console.WriteLine("Current Medicine Schedule:");
 
+/* Format and display medicine times */
+foreach (int val in times)
+{
+    string time = val.ToString();
+    int len = time.Length;
 
-Console.WriteLine("Signed integral types:");
+    if (len >= 3)
+    {
+        time = time.Insert(len - 2, ":");
+    }
+    else if (len == 2)
+    {
+        time = time.Insert(0, "0:");
+    }
+    else
+    {
+        time = time.Insert(0, "0:0");
+    }
 
-Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
-Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
-Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
-Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+    Console.Write($"{time} ");
+}
 
+Console.WriteLine();
 
-Console.WriteLine("");
-Console.WriteLine("Unsigned integral types:");
+Console.WriteLine("Enter new GMT");
+int newGMT = Convert.ToInt32(Console.ReadLine());
 
-Console.WriteLine($"byte   : {byte.MinValue} to {byte.MaxValue}");
-Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
-Console.WriteLine($"uint   : {uint.MinValue} to {uint.MaxValue}");
-Console.WriteLine($"ulong  : {ulong.MinValue} to {ulong.MaxValue}");
+if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+{
+    Console.WriteLine("Invalid GMT");
+}
+else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0)
+{
+    diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
 
+    /* Adjust the times by adding the difference, keeping the value within 24 hours */
+    for (int i = 0; i < times.Length; i++)
+    {
+        times[i] = ((times[i] + diff)) % 2400;
+    }
+}
+else
+{
+    diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
 
-Console.WriteLine("");
-Console.WriteLine("Floating point types:");
-Console.WriteLine($"float  : {float.MinValue} to {float.MaxValue} (with ~6-9 digits of precision)");
-Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
-Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
+    /* Adjust the times by adding the difference, keeping the value within 24 hours */
+    for (int i = 0; i < times.Length; i++)
+    {
+        times[i] = ((times[i] + diff)) % 2400;
+    }
+}
+
+Console.WriteLine("New Medicine Schedule:");
+
+/* Format and display medicine times */
+foreach (int val in times)
+{
+    string time = val.ToString();
+    int len = time.Length;
+
+    if (len >= 3)
+    {
+        time = time.Insert(len - 2, ":");
+    }
+    else if (len == 2)
+    {
+        time = time.Insert(0, "0:");
+    }
+    else
+    {
+        time = time.Insert(0, "0:0");
+    }
+
+    Console.Write($"{time} ");
+}
+
+Console.WriteLine();
+
 
